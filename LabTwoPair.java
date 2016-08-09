@@ -6,95 +6,70 @@ public class LabTwoPair {
 	public static void main(String[] args) {
 
 		Scanner scan1 = new Scanner(System.in);
-
+		
+		String input = "";
+		String choice = "Yes";
 		int state = 1;
-		boolean play = true;
 
-		while (play == true) {
+		System.out.println("Welcome! What is your name? (enter your name)");
+		input = scan1.nextLine();
 
+		System.out.println("Welcome " + input + "! Would you like to play a game? (enter yes or no)");
+		choice = scan1.nextLine();
+
+		while (choice.equalsIgnoreCase("yes")) {
 			switch (state) {
+			
 			case 1:
-				System.out.println("Welcome! What is your name?");
-				String name = scan1.next();
-				System.out.println("Hello " + name + ".");
-				System.out.println("Would you like to play the game? (Enter yes or no)"); // first
-																							// y/n
-
-				String choice = scan1.next();
-				if (choice.equalsIgnoreCase("yes"))
+				System.out.println("You are walking across a field and you encounter a dragon");
+				System.out.println("What do you do? Enter 'Face the beast' or 'run away'");
+				input = scan1.nextLine();
+				if (input.equalsIgnoreCase("face the beast")) {
 					state = 2;
-				else {
-					System.out.println("Okay!  Have a great day!");
-
-					play = false;
+				} else {
+					System.out.println("goodbye!");
 					break;
 				}
-
 			case 2:
-
-				System.out
-						.println("Excellent! Do you want to face the beast or run away? (Enter face the beast or run)");
-				String choice2 = scan1.nextLine(); //scan1.nextLine(); needed for strings
-				scan1.nextLine();
-
-				if (choice2.equalsIgnoreCase("face")) { //multiple lines requires braces
+				System.out.println("You approach the dragon, you see that he has _____ heads. (Enter 1, 2, or 3)");
+				input = scan1.nextLine();
+				if (input.equalsIgnoreCase("3")) {
 					state = 3;
-					
-				} else {
-					play = false;
-					System.out.println("Okay! Have a great day!");
+				} else if (input.equalsIgnoreCase("2") || input.equalsIgnoreCase("1")) {
+					System.out.println("1 and 2 - headed dragons are friendly, you end your quest.");
 					break;
 				}
 			case 3:
-				System.out.println("You approach the dragon.  You see that he has ___ heads.  (Enter one, two or three)");
-				String choice3 = scan1.nextLine();
-				if (choice3.equalsIgnoreCase("three") || choice3.equalsIgnoreCase("two")) {
-					state = 4;
-				}
-
-				else {
-					System.out.println("No one wants to fight a one headed dragon.  You end your quest.");
-					play = false;
-					scan1.nextLine();
-					break;
-				}
-
-			case 4:
 				System.out.println(
-						"No one has ever face a dragon with two or more heads! Choose your weapon (enter slingshot, sword, or bow and arrow");
-				String choice4 = scan1.nextLine();
-				scan1.nextLine();
-				if (choice4.equalsIgnoreCase("sword") || choice4.equalsIgnoreCase("slingshot")
-						|| choice4.equalsIgnoreCase("bow")) {
-					state = 5;
+						"No one has ever faced a 3-headed dragon before! Choose your weapon (enter 'slingshot', 'sword' or 'bow and arrow'");
+				input = scan1.nextLine();
+				if ((input.equalsIgnoreCase("bow and arrow") || input.equalsIgnoreCase("slingshot")
+						|| input.equalsIgnoreCase("sword"))) {
+					System.out.println("Armed with your " + input + " you approach the beast.");
+					state = 4;
 				} else {
-					System.out.println("Your fists wont' kill a dragon, you're done.");
-					play = false;
+					System.out.println("That is not a good weapon choice.");
 					break;
 				}
-			case 5:
-				System.out.println("Armed with your weapon of choice, you approach the dragon!  You can feel its fiery breath as you get closer.  It stares at you with its __ eyes.  (enter red or blue)");
-				String choice5 = scan1.nextLine();
-				if (choice5.equalsIgnoreCase("red")) {
-					state = 6;
-
+			case 4:
+				System.out.println("It stares at you with it's fiery ______ eyes (enter 'red' or 'blue'");
+				input = scan1.nextLine();
+				if (input.equalsIgnoreCase("Red")) {
+					System.out.println(
+							"Whew! Red-eyed dragons are friendly! You become best friends. You name the dragon ____(enter a name)");
+					input = scan1.nextLine();
+					System.out.println("You and " + input + " live happily ever after");
+					break;
 				} else {
-					System.out.println("Blue-eyed dragons are the worst, run!");
+					System.out.println("You're dead.");
 					break;
 				}
-
-			case 6:
-				if (play = true) {
-					System.out.println("Thank goodness! Red-eyed dragons are friendly! You name the dragon ___");
-					String choice6 = scan1.nextLine();
-					System.out.println("You and " + choice6 + " live happily ever after.");
-					play = false; // cleaner than system.exit; play = false will save your program
-				}
-
+			
 			}
-
+			System.out.println("Do you wish to play again?");
+			choice = scan1.nextLine();
 		}
-
+		
 	}
 
 }
